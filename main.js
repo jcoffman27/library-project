@@ -38,11 +38,9 @@ function addBookToLibrary(){
     let author = newAuthor.value;
     let pages = newPages.value;
     let read = "";
-    if(newRead.checked === true ){
-        read = "completed";
-    } else {
-        read = "incomplete";
-    }
+
+
+
     function toggleButtonClass(){
         bookRead.classList.toggle("book-notread");   
     }
@@ -63,6 +61,9 @@ function addBookToLibrary(){
     bookRead.className = "book-read";
     let bookClose = document.createElement('span');
     bookClose.className = "modal-close";
+
+    
+    
     newBook.appendChild(bookTitle);
     newBook.appendChild(bookAuthor);
     newBook.appendChild(bookPages);
@@ -79,15 +80,20 @@ function addBookToLibrary(){
                     bookRead.innerHTML = myLibrary[i].read;
                 }
         }
+        if(newRead.checked === true ){
+            return read = "completed";
+        } else if(newRead.checked === false){
+            
+            bookRead.classList.toggle("book-notread");
+            return read = "completed";
+        }
     }
 
     function removeBook(){
         newBook.style.visibility = "hidden";
         newBook.style.opacity = "0";
         newBook.remove();
-        for (i = 0; i < myLibrary.length; i++){
-            myLibrary[i].pop(theNewBook);
-        }
+            myLibrary.pop(theNewBook);
     };
 
     function resetTheNewBook(){
